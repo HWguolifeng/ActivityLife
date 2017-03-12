@@ -1,6 +1,7 @@
 package com.coolweather.android.activitylife;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -79,6 +80,13 @@ public class MainActivity extends Activity
     {
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(TAG, "onRestoreInstanceState: ");
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+        super.onConfigurationChanged(newConfig);
+        Log.i(TAG, "onConfigurationChanged: ");
     }
 }
 
