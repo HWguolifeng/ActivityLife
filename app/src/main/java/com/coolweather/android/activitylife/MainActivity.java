@@ -1,10 +1,12 @@
 package com.coolweather.android.activitylife;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity
@@ -22,8 +24,24 @@ public class MainActivity extends Activity
             Log.i(TAG, "savedInstanceState: " + test);
         }
         setContentView(R.layout.activity_main);
-        Log.i(TAG, "onCreate: ");
+        Log.i(TAG, "onCreate: " + this.toString());
+        Button button = (Button) this.findViewById(R.id.button);
+        button.setOnClickListener(new MyclickListener());
     }
+
+    /**
+     * 监听类
+     */
+    private class MyclickListener implements View.OnClickListener
+    {
+
+        @Override
+        public void onClick(View v)
+        {
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
+        }
+    }
+
 
     @Override
     protected void onStart()
@@ -71,7 +89,7 @@ public class MainActivity extends Activity
     protected void onSaveInstanceState(Bundle outState)
     {
         super.onSaveInstanceState(outState);
-        outState.putString("test", ((EditText) this.findViewById(R.id.text)).getText().toString());
+//        outState.putString("test", ((EditText) this.findViewById(R.id.text)).getText().toString());
         Log.i(TAG, "onSaveInstanceState: ");
     }
 
